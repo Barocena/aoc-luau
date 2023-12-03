@@ -1,0 +1,9 @@
+{
+  "name": "codeadvent",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "$path": "src"
+    }
+  }
+}

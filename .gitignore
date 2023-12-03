@@ -1,0 +1,10 @@
+# Project place file
+/aoc-luau.rbxlx
+
+# Roblox Studio lock files
+/*.rbxlx.lock
+/*.rbxl.lock
+
+
+# Sourcemap files
+/sourcemap.json
