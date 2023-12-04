@@ -42,7 +42,7 @@ for index, card in data do
 	table.insert(indexedData, { ["index"] = index, ["card"] = card })
 end
 
-function getPileAmount() -- takes 53.7 sec to fully process
+function getPileAmount()
 	if partTwoSum == 1 and #currentPile == 0 then
 		currentPile = indexedData
 	end
