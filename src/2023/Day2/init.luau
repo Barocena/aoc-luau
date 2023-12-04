@@ -49,11 +49,7 @@ print(`Day 2 | Part 1: {partOneSum}`)
 --#endregion
 
 --#region Part 2
---[[ 
-in each game what are the biggest number for each color
-after getting the number for each color do r * g * b
-and add that to the sum
-]]
+
 local partTwoSum = 0
 for _, gameinfo in games do
 	local biggest = { ["red"] = 0, ["green"] = 0, ["blue"] = 0 }
