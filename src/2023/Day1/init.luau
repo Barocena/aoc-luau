@@ -1,4 +1,5 @@
 local inputs = require(script.inputs)
+local data = inputs:split("\n")
 
 --#region Part 1
 
@@ -16,7 +17,7 @@ function partOne(input: string): string
 end
 
 local partOneSum = 0
-for _, input in inputs do
+for _, input in data do
 	partOneSum += partOne(input)
 end
 
@@ -71,7 +72,7 @@ function partTwo(input: string)
 end
 
 local partTwoSum = 0
-for _, input in inputs do
+for _, input in data do
 	partTwoSum += partTwo(input)
 end
 
