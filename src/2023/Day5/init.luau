@@ -1,39 +1,5 @@
 local inputs = require(script.inputs)
 
-local _testinput = [[seeds: 79 14 55 13
-
-seed-to-soil map:
-50 98 2
-52 50 48
-
-soil-to-fertilizer map:
-0 15 37
-37 52 2
-39 0 15
-
-fertilizer-to-water map:
-49 53 8
-0 11 42
-42 0 7
-57 7 4
-
-water-to-light map:
-88 18 7
-18 25 70
-
-light-to-temperature map:
-45 77 23
-81 45 19
-68 64 13
-
-temperature-to-humidity map:
-0 69 1
-1 0 69
-
-humidity-to-location map:
-60 56 37
-56 93 4]]
-
 --#region Part 1
 
 --#region Parse the Data
@@ -62,7 +28,13 @@ end
 
 --#region Calculate the Result
 
+local cd = 0
+
 function calculateRange(value, rangeData)
+	cd += 1
+	if cd % 10000000 == 0 then
+		wait()
+	end
 	local dest, src, len = tonumber(rangeData[1]), tonumber(rangeData[2]), tonumber(rangeData[3])
 	local result = (value - src)
 	result += dest
@@ -93,6 +65,61 @@ end)
 
 print("Day 5 | Part 1:", locations[1])
 
+--#endregion
+
+--#region Part 2
+
+local partTwoSeeds = {}
+for i = 2, #seeds, 2 do
+	table.insert(partTwoSeeds, { seeds[i - 1], seeds[i] })
+end
+
+local minlocation = math.huge
+
+print("started")
+
+for _, seed in partTwoSeeds do
+	
+	--[[ 	My initial solution (too slow)
+
+	for i = 1, seed[2] do
+		local number = tonumber(seed[1] + i)
+		for _, map in maps do
+			for _, range in map do
+				local calculation = calculateRange(number, range)
+				if calculation then
+					number = calculation
+					break
+				end
+			end
+		end
+		location = math.min(location, number)
+	end 
+	]]
+
+	local number = tonumber(seed[1])
+	local ending = tonumber(seed[1] + seed[2])
+	while number <= ending do
+		local nextNumber = math.huge
+		local location = number
+
+		for _, map in maps do
+			for _, range in map do
+				local rangeEnd = tonumber(range[2]) + tonumber(range[3]) :: any
+
+				if location < rangeEnd and location >= tonumber(range[2]) then
+					nextNumber = math.min(nextNumber, rangeEnd - location)
+					location = (location - tonumber(range[2])) + tonumber(range[1])
+					break
+				end
+			end
+		end
+		minlocation = math.min(minlocation, location)
+		number += nextNumber
+	end
+end
+
+print("Day 5 | Part 2:", minlocation)
 
 --#endregion
 
