@@ -28,13 +28,7 @@ end
 
 --#region Calculate the Result
 
-local cd = 0
-
 function calculateRange(value, rangeData)
-	cd += 1
-	if cd % 10000000 == 0 then
-		wait()
-	end
 	local dest, src, len = tonumber(rangeData[1]), tonumber(rangeData[2]), tonumber(rangeData[3])
 	local result = (value - src)
 	result += dest
@@ -67,6 +61,8 @@ print("Day 5 | Part 1:", locations[1])
 
 --#endregion
 
+--#endregion
+
 --#region Part 2
 
 local partTwoSeeds = {}
@@ -76,10 +72,7 @@ end
 
 local minlocation = math.huge
 
-print("started")
-
 for _, seed in partTwoSeeds do
-	
 	--[[ 	My initial solution (too slow)
 
 	for i = 1, seed[2] do
