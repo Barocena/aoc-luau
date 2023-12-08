@@ -118,7 +118,7 @@ for i, _ in Hands do
 	PartOneSum += Hands[i][3] * i
 end
 
-print(`Day 7 | Part 1 | {PartOneSum}`)
+print(`Day 7 | Part 1: {PartOneSum}`)
 
 --#endregion
 
@@ -160,7 +160,7 @@ for i, _ in Hands do
 	PartTwoSum += Hands[i][3] * i
 end
 
-print(`Day 7 | Part 2 | {PartTwoSum}`)
+print(`Day 7 | Part 2: {PartTwoSum}`)
 
 --#endregion
 
